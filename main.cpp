@@ -52,7 +52,6 @@ vector<string> line_to_words(string line)
 	{
 		if (line[i] == ',' || i == line.size())
 		{
-			// cout << line.substr(beg_of_word, i - beg_of_word) << endl;
 			words.push_back(line.substr(beg_of_word, i - beg_of_word));
 			beg_of_word = i + 1;
 		}
@@ -62,7 +61,6 @@ vector<string> line_to_words(string line)
 	return words;
 }
 
-
 void build_dict(string fileAddress)
 {
 	ifstream dict_file(fileAddress);
@@ -70,15 +68,7 @@ void build_dict(string fileAddress)
 	if (dict_file.is_open())
 	{
 		getline(dict_file, line);
-
 		dict = line_to_words(line);
-
-		// for (int i = 0; i < dict.size(); ++i)
-		// {
-		// 	// cout << i << endl;
-		// 	cout << dict[i] << ' ';
-		// }
-		// cout << endl;
 	}
 	else
 		cout << "Unable to open the file.\n";
@@ -103,7 +93,7 @@ void build_grid(string fileAddress)
 		
 		for (int i = 0; i < grid_size; ++i)
 		{
-			for (int j = 0; j < 2 * grid_size; ++j)//considering spaces betw chars --> 2 * size
+			for (int j = 0; j < grid_size; ++j)
 			{
 				if(lines[i][j] != ' ')
 					grid[i].push_back(lines[i][j]);
@@ -112,5 +102,14 @@ void build_grid(string fileAddress)
 	}
 	else
 		cout << "Unable to open the file.\n";
+
+	for (int i = 0; i < grid.size(); ++i)
+	{
+		for (int j = 0; j < grid[i].size(); ++j)
+		{
+			cout << grid[i][j];
+		}
+		cout << endl;
+	}
 }
 
